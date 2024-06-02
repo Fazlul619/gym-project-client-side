@@ -24,7 +24,7 @@ const Banner = () => {
           progress, every step of the way!
         </p>
         <div>
-          <Button gradientDuoTone="cyanToBlue">Cyan to Blue</Button>
+          <Button gradientDuoTone="cyanToBlue">Feature</Button>
         </div>
       </div>
     </div>

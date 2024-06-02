@@ -5,6 +5,7 @@ import AllClassesPage from "../Pages/All Classes Page/AllClassesPage";
 import AllTrainerPage from "../Pages/All Trainer Page/AllTrainerPage";
 import ForumsPage from "../Pages/Forums Page/ForumsPage";
 import Login from "../Pages/Login Page/Login";
+import Register from "../Pages/Register Page/Register";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
     ],
   },

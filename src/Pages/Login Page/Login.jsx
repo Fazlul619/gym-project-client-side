@@ -1,9 +1,10 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div>
+    <div className="my-10">
       <form className="flex max-w-md flex-col gap-4 mx-auto">
         <div>
           <div className="mb-2 block">
@@ -12,7 +13,7 @@ const Login = () => {
           <TextInput
             id="email2"
             type="email"
-            placeholder="name@flowbite.com"
+            placeholder="name@gmail.com"
             required
             shadow
           />
@@ -23,12 +24,7 @@ const Login = () => {
           </div>
           <TextInput id="password2" type="password" required shadow />
         </div>
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="repeat-password" value="Repeat password" />
-          </div>
-          <TextInput id="repeat-password" type="password" required shadow />
-        </div>
+
         <div className="flex items-center gap-2">
           <Checkbox id="agree" />
           <Label htmlFor="agree" className="flex">
@@ -41,7 +37,27 @@ const Login = () => {
             </Link>
           </Label>
         </div>
-        <Button type="submit">Register new account</Button>
+        <div className="flex items-center">
+          <Label htmlFor="agree" className="flex">
+            Create an account?&nbsp;
+            <Link
+              to="/register"
+              className="text-cyan-600 hover:underline dark:text-cyan-500"
+            >
+              Register
+            </Link>
+          </Label>
+        </div>
+        <Button outline type="submit" className="font-bold">
+          Login
+        </Button>
+        <div className="flex items-center justify-center">
+          <p className="w-full">
+            <Button outline className="w-full">
+              <FcGoogle className="text-2xl" />
+            </Button>
+          </p>
+        </div>
       </form>
     </div>
   );

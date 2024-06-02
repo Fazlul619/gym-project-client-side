@@ -10,7 +10,15 @@ import {
   NavbarToggle,
 } from "flowbite-react";
 import logo from "../../../assets/banner/logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <Navbar fluid rounded>
@@ -40,13 +48,19 @@ const NavBar = () => {
               />
             }
           >
-            <DropdownItem>Dashboard</DropdownItem>
-            <DropdownItem>Settings</DropdownItem>
-            <DropdownItem>Earnings</DropdownItem>
-            <DropdownDivider />
-            <NavbarLink href="/login">
-              <DropdownItem>Login</DropdownItem>
-            </NavbarLink>
+            {user ? (
+              <>
+                <DropdownItem>Dashboard</DropdownItem>
+                <DropdownDivider />
+                <DropdownItem onClick={handleLogOut}>Log Out</DropdownItem>
+              </>
+            ) : (
+              <>
+                <NavbarLink href="/login">
+                  <DropdownItem>Login</DropdownItem>
+                </NavbarLink>
+              </>
+            )}
           </Dropdown>
           <NavbarToggle />
         </div>

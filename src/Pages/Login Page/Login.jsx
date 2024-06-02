@@ -4,7 +4,9 @@ import { Helmet } from "react-helmet";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-
+import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
 
@@ -14,10 +16,23 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User login successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+
+        toast.error(error.message);
+      });
   };
   return (
     <div className="my-10">
@@ -87,6 +102,7 @@ const Login = () => {
             </Button>
           </p>
         </div>
+        <ToastContainer />
       </form>
     </div>
   );

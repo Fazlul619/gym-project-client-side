@@ -1,15 +1,33 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    signIn(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+    });
+  };
   return (
     <div className="my-10">
       <Helmet>
         <title>Fitness Flow | Login</title>
       </Helmet>
-      <form className="flex max-w-md flex-col gap-4 mx-auto">
+      <form
+        onSubmit={handleLogin}
+        className="flex max-w-md flex-col gap-4 mx-auto"
+      >
         <div>
           <div className="mb-2 block">
             <Label htmlFor="email2" value="Your email" />
@@ -17,6 +35,7 @@ const Login = () => {
           <TextInput
             id="email2"
             type="email"
+            name="email"
             placeholder="name@gmail.com"
             required
             shadow
@@ -26,7 +45,13 @@ const Login = () => {
           <div className="mb-2 block">
             <Label htmlFor="password2" value="Your password" />
           </div>
-          <TextInput id="password2" type="password" required shadow />
+          <TextInput
+            id="password2"
+            name="password"
+            type="password"
+            required
+            shadow
+          />
         </div>
 
         <div className="flex items-center gap-2">

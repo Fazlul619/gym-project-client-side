@@ -1,10 +1,14 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { Helmet } from "react-helmet";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
     <div>
+      <Helmet>
+        <title>Fitness Flow | Register</title>
+      </Helmet>
       <form className="flex max-w-md flex-col gap-4 mb-10 mx-auto">
         <div>
           <div className="mb-2 block">

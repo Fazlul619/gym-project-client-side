@@ -15,6 +15,7 @@ import {
   BsInstagram,
   BsTwitter,
 } from "react-icons/bs";
+import logo from "../../../assets/banner/logo.png";
 const FooterPage = () => {
   return (
     <Footer container>
@@ -22,10 +23,10 @@ const FooterPage = () => {
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>
             <FooterBrand
-              href="https://flowbite.com"
-              src="https://flowbite.com/docs/images/logo.svg"
+              href="/"
+              src={logo}
               alt="Flowbite Logo"
-              name="Flowbite"
+              name="Fitness Flow"
             />
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">

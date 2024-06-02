@@ -9,14 +9,15 @@ import {
   NavbarLink,
   NavbarToggle,
 } from "flowbite-react";
-
+import logo from "../../../assets/banner/logo.png";
 const NavBar = () => {
   return (
     <div>
       <Navbar fluid rounded>
         <NavbarBrand>
+          <img src={logo} className="mr-3 h-6 sm:h-9" alt="Fitness Flow Logo" />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            Flowbite React
+            Fitness Flow
           </span>
         </NavbarBrand>
         <NavbarCollapse>

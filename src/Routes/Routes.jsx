@@ -7,6 +7,9 @@ import ForumsPage from "../Pages/Forums Page/ForumsPage";
 import Login from "../Pages/Login Page/Login";
 import Register from "../Pages/Register Page/Register";
 
+import TrainerBookedPage from "../Pages/Trainer Booked Page/TrainerBookedPage";
+import PrivateRoute from "./PrivateRoute";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -35,6 +38,14 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/trainerBookedPage",
+        element: (
+          <PrivateRoute>
+            <TrainerBookedPage></TrainerBookedPage>
+          </PrivateRoute>
+        ),
       },
     ],
   },

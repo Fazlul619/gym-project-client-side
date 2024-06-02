@@ -35,6 +35,7 @@ const NavBar = () => {
           <NavbarLink href="/allClassesPage">All Classes Page</NavbarLink>
           <NavbarLink href="/allTrainerPage">All Trainer Page</NavbarLink>
           <NavbarLink href="/forumsPage">Forums Page</NavbarLink>
+          <NavbarLink href="/trainerBookedPage">Trainer Booked Page</NavbarLink>
         </NavbarCollapse>
         <div className="flex md:order-2">
           <Dropdown
@@ -43,13 +44,17 @@ const NavBar = () => {
             label={
               <Avatar
                 alt="User settings"
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                img={
+                  user?.photoURL ??
+                  "https://i.ibb.co/x87KQwS/5402435-account-profile-user-avatar-man-icon.png"
+                }
                 rounded
               />
             }
           >
             {user ? (
               <>
+                <DropdownItem>{user?.displayName ?? "User Name"}</DropdownItem>
                 <DropdownItem>Dashboard</DropdownItem>
                 <DropdownDivider />
                 <DropdownItem onClick={handleLogOut}>Log Out</DropdownItem>

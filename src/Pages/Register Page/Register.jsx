@@ -1,13 +1,14 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
-import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../Social Login/SocialLogin";
 const Register = () => {
   const {
     register,
@@ -17,7 +18,7 @@ const Register = () => {
   } = useForm();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  const axiosPublic = useAxiosPublic();
   const onSubmit = (data) => {
     console.log(data);
 
@@ -26,16 +27,25 @@ const Register = () => {
       console.log(loggedUser);
       updateUserProfile(data.name, data.photo)
         .then(() => {
-          console.log("user profile updated");
-          reset();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "User created successfully",
-            showConfirmButton: false,
-            timer: 1500,
+          //  create user entry in database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user add");
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User Created Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
           });
-          navigate("/");
         })
         .catch((error) => {
           console.log(error.message);
@@ -164,9 +174,7 @@ const Register = () => {
 
         <div className="flex items-center justify-center">
           <p className="w-full">
-            <Button outline className="w-full">
-              <FcGoogle className="text-2xl" />
-            </Button>
+            <SocialLogin></SocialLogin>
           </p>
         </div>
         <ToastContainer />

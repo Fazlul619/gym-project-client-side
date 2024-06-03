@@ -1,12 +1,12 @@
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 import { useContext } from "react";
 import { Helmet } from "react-helmet";
-import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SocialLogin from "../Social Login/SocialLogin";
 const Login = () => {
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -100,9 +100,7 @@ const Login = () => {
         </Button>
         <div className="flex items-center justify-center">
           <p className="w-full">
-            <Button outline className="w-full">
-              <FcGoogle className="text-2xl" />
-            </Button>
+            <SocialLogin></SocialLogin>
           </p>
         </div>
         <ToastContainer />

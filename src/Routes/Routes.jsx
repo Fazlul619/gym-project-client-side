@@ -9,6 +9,7 @@ import Register from "../Pages/Register Page/Register";
 
 import TrainerBookedPage from "../Pages/Trainer Booked Page/TrainerBookedPage";
 import PrivateRoute from "./PrivateRoute";
+import BeATrainerPage from "../Pages/Be A Trainer Page/BeATrainerPage";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <TrainerBookedPage></TrainerBookedPage>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/beATrainerPage",
+        element: (
+          <PrivateRoute>
+            <BeATrainerPage></BeATrainerPage>
           </PrivateRoute>
         ),
       },

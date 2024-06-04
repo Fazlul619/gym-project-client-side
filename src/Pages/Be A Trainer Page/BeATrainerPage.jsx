@@ -4,9 +4,9 @@ import { Button, Label } from "flowbite-react";
 
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const BeATrainerPage = () => {
   const animatedComponents = makeAnimated();
@@ -14,7 +14,8 @@ const BeATrainerPage = () => {
   const email = user.email;
   const [checkboxAll, setCheckboxAll] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const axiosPublic = useAxiosPublic();
+
+  const axiosSecure = useAxiosSecure();
   const handleTrainerSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -48,7 +49,7 @@ const BeATrainerPage = () => {
     form.time.value = "";
 
     console.log(trainerInfo);
-    axiosPublic
+    axiosSecure
       .post("/trainerInfo", trainerInfo)
       .then((res) => {
         if (res.data.insertedId) {
@@ -57,7 +58,7 @@ const BeATrainerPage = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Trainer requested Successfully",
+            title: "Trainer request submit Successfully",
             showConfirmButton: false,
             timer: 1500,
           });

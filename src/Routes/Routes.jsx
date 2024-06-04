@@ -10,6 +10,7 @@ import Register from "../Pages/Register Page/Register";
 import TrainerBookedPage from "../Pages/Trainer Booked Page/TrainerBookedPage";
 import PrivateRoute from "./PrivateRoute";
 import BeATrainerPage from "../Pages/Be A Trainer Page/BeATrainerPage";
+import TrainerDetailsPage from "../Pages/Trainer Details Page/TrainerDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,12 @@ export const router = createBrowserRouter([
       {
         path: "/allTrainerPage",
         element: <AllTrainerPage></AllTrainerPage>,
+      },
+      {
+        path: "/trainerDetailsPage",
+        element: <TrainerDetailsPage></TrainerDetailsPage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allTrainers/${params.id}`),
       },
       {
         path: "/forumsPage",

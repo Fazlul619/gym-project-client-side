@@ -1,13 +1,86 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { Button, Checkbox, Label } from "flowbite-react";
+import { Button, Label } from "flowbite-react";
 
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const BeATrainerPage = () => {
   const animatedComponents = makeAnimated();
   const { user } = useContext(AuthContext);
+  const email = user.email;
+  const [checkboxAll, setCheckboxAll] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const axiosPublic = useAxiosPublic();
+  const handleTrainerSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const age = form.age.value;
+    const profileImage = form.profileImage.value;
+    const experience = form.experience.value;
+    const expertise = form.expertise.value;
+    const details = form.details.value;
+    const time = form.time.value;
+
+    const trainerInfo = {
+      name,
+      email,
+      age,
+      profileImage,
+      experience,
+      expertise,
+      details,
+      time,
+      selectedOptions,
+      checkboxAll,
+    };
+
+    form.name.value = "";
+    form.age.value = "";
+    form.profileImage.value = "";
+    form.experience.value = "";
+    form.expertise.value = "";
+    form.details.value = "";
+    form.time.value = "";
+
+    console.log(trainerInfo);
+    axiosPublic
+      .post("/trainerInfo", trainerInfo)
+      .then((res) => {
+        if (res.data.insertedId) {
+          console.log("user add");
+
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Trainer requested Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+      });
+  };
+
+  const handleSelectChange = (selectedOptions) => {
+    setSelectedOptions(selectedOptions);
+  };
+
+  const handleCheckbox = (e) => {
+    if (e.target.checked) {
+      setCheckboxAll([...checkboxAll, e.target.value]);
+    } else {
+      setCheckboxAll(checkboxAll.filter((item) => item != e.target.value));
+    }
+  };
 
   const options = [
     { value: "Saturday", label: "Saturday" },
@@ -34,6 +107,7 @@ const BeATrainerPage = () => {
               </h2>
               {/* Form */}
               <form
+                onSubmit={handleTrainerSubmit}
                 className="mx-auto mb-4 max-w-sm pb-4"
                 name="wf-form-password"
                 method="get"
@@ -42,6 +116,7 @@ const BeATrainerPage = () => {
                   <Label value="Your Name" />
                   <input
                     type="text"
+                    name="name"
                     className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]"
                     placeholder="Full Name"
                     required=""
@@ -53,15 +128,18 @@ const BeATrainerPage = () => {
                     type="email"
                     className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6  text-sm text-[#333333]"
                     maxLength="256"
-                    name="name"
-                    placeholder="Email Address"
-                    required=""
+                    name="email"
+                    readOnly
+                    placeholder={email}
                   />
                 </div>
                 <div className="text-left">
                   <Label value="Your Age" />
                   <input
                     type="number"
+                    name="age"
+                    max={100}
+                    min={18}
                     className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]"
                     placeholder="Age"
                     required=""
@@ -71,6 +149,9 @@ const BeATrainerPage = () => {
                   <Label value="Your Experience" />
                   <input
                     type="number"
+                    name="experience"
+                    max={40}
+                    min={0}
                     className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]"
                     placeholder="Years of experience"
                     required=""
@@ -80,6 +161,7 @@ const BeATrainerPage = () => {
                   <Label value="Your Photo Url" />
                   <input
                     type="text"
+                    name="profileImage"
                     className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]"
                     placeholder="Profile Image"
                     required=""
@@ -89,6 +171,7 @@ const BeATrainerPage = () => {
                   <Label value="Expertise" />
                   <input
                     type="text"
+                    name="expertise"
                     className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]"
                     placeholder="Example: Yoga"
                     required=""
@@ -98,6 +181,7 @@ const BeATrainerPage = () => {
                   <Label value="Details" />
                   <input
                     type="text"
+                    name="details"
                     className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]"
                     placeholder="Your Details"
                     required=""
@@ -107,6 +191,7 @@ const BeATrainerPage = () => {
                   <Label value="Available time in a day" />
                   <input
                     type="time"
+                    name="time"
                     className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]"
                     placeholder="Available time in a day"
                     required=""
@@ -118,6 +203,7 @@ const BeATrainerPage = () => {
                   components={animatedComponents}
                   isMulti
                   options={options}
+                  onChange={handleSelectChange}
                 />
                 {/* Check Box */}
                 <div
@@ -127,53 +213,105 @@ const BeATrainerPage = () => {
                   <Label className="text-left" value="Skills" />
 
                   <div className="flex items-center gap-2">
-                    <Checkbox id="accept" defaultChecked />
-                    <Label htmlFor="accept" className="flex">
-                      Anatomy and physiology knowledge.
+                    <input
+                      type="checkbox"
+                      id="skill-1"
+                      value="Anatomy and physiology knowledge"
+                      onChange={handleCheckbox}
+                    />
+                    <Label htmlFor="skill-1" className="flex">
+                      Anatomy and physiology knowledge
                     </Label>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Checkbox id="promotion" />
-                    <Label htmlFor="promotion">
-                      Personalized workout plans
-                    </Label>
+                    <input
+                      type="checkbox"
+                      id="skill-2"
+                      value="Personalized workout plans"
+                      onChange={handleCheckbox}
+                    />
+                    <Label htmlFor="skill-2">Personalized workout plans</Label>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Checkbox id="age" />
-                    <Label htmlFor="age">
+                    <input
+                      type="checkbox"
+                      id="skill-3"
+                      value="Communication and motivation skills"
+                      onChange={handleCheckbox}
+                    />
+                    <Label htmlFor="skill-3">
                       Communication and motivation skills
                     </Label>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Checkbox id="age" />
-                    <Label htmlFor="age">Strength training experience</Label>
+                    <input
+                      type="checkbox"
+                      id="skill-4"
+                      value="Strength training experience"
+                      onChange={handleCheckbox}
+                    />
+                    <Label htmlFor="skill-4">
+                      Strength training experience
+                    </Label>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Checkbox id="age" />
-                    <Label htmlFor="age"> Proper exercise techniques</Label>
+                    <input
+                      type="checkbox"
+                      id="skill-5"
+                      value="Proper exercise techniques"
+                      onChange={handleCheckbox}
+                    />
+                    <Label htmlFor="skill-5"> Proper exercise techniques</Label>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Checkbox id="age" />
-                    <Label htmlFor="age">Client progress monitoring</Label>
+                    <input
+                      type="checkbox"
+                      id="skill-6"
+                      value="Client progress monitoring"
+                      onChange={handleCheckbox}
+                    />
+                    <Label htmlFor="skill-6">Client progress monitoring</Label>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Checkbox id="age" />
-                    <Label htmlFor="age">CPR and first aid certification</Label>
+                    <input
+                      type="checkbox"
+                      id="skill-7"
+                      value=" CPR and first aid certification"
+                      onChange={handleCheckbox}
+                    />
+                    <Label htmlFor="skill-7">
+                      CPR and first aid certification
+                    </Label>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Checkbox id="age" />
-                    <Label htmlFor="age">
+                    <input
+                      type="checkbox"
+                      id="skill-8"
+                      value=" Nutrition and diet understanding"
+                      onChange={handleCheckbox}
+                    />
+                    <Label htmlFor="skill-8">
                       Nutrition and diet understanding
                     </Label>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Checkbox id="age" />
-                    <Label htmlFor="age"> Adaptability to client needs.</Label>
+                    <input
+                      type="checkbox"
+                      id="skill-9"
+                      value=" Adaptability to client needs"
+                      onChange={handleCheckbox}
+                    />
+                    <Label htmlFor="skill-9">
+                      Adaptability to client needs
+                    </Label>
                   </div>
                 </div>
 
-                <Button className=" mt-4 flex w-full items-center justify-center bg-[#276ef1] px-8 py-4 text-center font-semibold text-white transition [box-shadow:rgb(171,_196,_245)_-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px]">
-                  <p className="mr-6 font-bold">Join Flowspark</p>
+                <Button
+                  type="submit"
+                  className=" mt-4 flex w-full items-center justify-center bg-[#276ef1] px-8 py-4 text-center font-semibold text-white transition [box-shadow:rgb(171,_196,_245)_-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px]"
+                >
+                  <p className="mr-6 font-bold">Applied</p>
                   <svg
                     className="h-4 w-4 flex-none"
                     fill="currentColor"

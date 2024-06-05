@@ -12,6 +12,7 @@ const BeATrainerPage = () => {
   const animatedComponents = makeAnimated();
   const { user } = useContext(AuthContext);
   const email = user.email;
+  const status = "pending";
   const [checkboxAll, setCheckboxAll] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -38,6 +39,7 @@ const BeATrainerPage = () => {
       time,
       selectedOptions,
       checkboxAll,
+      status,
     };
 
     form.name.value = "";
@@ -48,7 +50,7 @@ const BeATrainerPage = () => {
     form.details.value = "";
     form.time.value = "";
 
-    console.log(trainerInfo);
+    // console.log(trainerInfo);
     axiosSecure
       .post("/trainerInfo", trainerInfo)
       .then((res) => {

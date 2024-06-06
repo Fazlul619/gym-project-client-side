@@ -35,7 +35,7 @@ const NavBar = () => {
           <NavbarLink href="/allClassesPage">All Classes Page</NavbarLink>
           <NavbarLink href="/allTrainerPage">All Trainer Page</NavbarLink>
           <NavbarLink href="/forumsPage">Forums Page</NavbarLink>
-          <NavbarLink href="/trainerBookedPage">Trainer Booked Page</NavbarLink>
+          <NavbarLink href="/bookedTrainerPage">Booked Trainer Page</NavbarLink>
         </NavbarCollapse>
         <div className="flex md:order-2">
           <Dropdown

@@ -7,10 +7,22 @@ import ForumsPage from "../Pages/Forums Page/ForumsPage";
 import Login from "../Pages/Login Page/Login";
 import Register from "../Pages/Register Page/Register";
 
-import TrainerBookedPage from "../Pages/Trainer Booked Page/TrainerBookedPage";
 import PrivateRoute from "./PrivateRoute";
 import BeATrainerPage from "../Pages/Be A Trainer Page/BeATrainerPage";
 import TrainerDetailsPage from "../Pages/Trainer Details Page/TrainerDetailsPage";
+import DashBoard from "../Pages/Dash Board/DashBoard/DashBoard";
+import AllNewsletterSubscribers from "../Pages/Dash Board/All Newsletter subscribers/AllNewsletterSubscribers";
+import AllTrainers from "../Pages/Dash Board/All Trainers/AllTrainers";
+import AppliedTrainer from "../Pages/Dash Board/Applied Trainer/AppliedTrainer";
+import Balance from "../Pages/Dash Board/Balance/Balance";
+import AddNewClass from "../Pages/Dash Board/Add new Class/AddNewClass";
+import ManageSlots from "../Pages/Dash Board/Manage Slots/ManageSlots";
+import AddNewSlot from "../Pages/Dash Board/Add New slot/AddNewSlot";
+import AddNewForum from "../Pages/Dash Board/Add New Forum/AddNewForum";
+import ActivityLogPage from "../Pages/Dash Board/Activity Log page/ActivityLogPage";
+import ProfilePage from "../Pages/Dash Board/Profile Page/ProfilePage";
+import BookedTrainer from "../Pages/Dash Board/Booked Trainer/BookedTrainer";
+import BookingTrainer from "../Pages/Trainer Details Page/BookingTrainer";
 
 export const router = createBrowserRouter([
   {
@@ -30,7 +42,7 @@ export const router = createBrowserRouter([
         element: <AllTrainerPage></AllTrainerPage>,
       },
       {
-        path: "/trainerDetailsPage",
+        path: "/trainerDetailsPage/:id",
         element: <TrainerDetailsPage></TrainerDetailsPage>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allTrainers/${params.id}`),
@@ -48,10 +60,10 @@ export const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
-        path: "/trainerBookedPage",
+        path: "/bookedTrainerPage",
         element: (
           <PrivateRoute>
-            <TrainerBookedPage></TrainerBookedPage>
+            <BookedTrainer></BookedTrainer>
           </PrivateRoute>
         ),
       },
@@ -62,6 +74,69 @@ export const router = createBrowserRouter([
             <BeATrainerPage></BeATrainerPage>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/bookingTrainer/:id/:slot",
+        element: <BookingTrainer></BookingTrainer>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashBoard></DashBoard>
+      </PrivateRoute>
+    ),
+    children: [
+      // admin routes
+      {
+        path: "allNewsletterSubscribers",
+        element: <AllNewsletterSubscribers></AllNewsletterSubscribers>,
+      },
+
+      {
+        path: "allTrainers",
+        element: <AllTrainers></AllTrainers>,
+      },
+      {
+        path: "appliedTrainer",
+        element: <AppliedTrainer></AppliedTrainer>,
+      },
+      {
+        path: "balance",
+        element: <Balance></Balance>,
+      },
+      {
+        path: "addNewClass",
+        element: <AddNewClass></AddNewClass>,
+      },
+      // shared route for admin and trainer
+      {
+        path: "addNewForum",
+        element: <AddNewForum></AddNewForum>,
+      },
+      // Trainer Route
+      {
+        path: "manageSlots",
+        element: <ManageSlots></ManageSlots>,
+      },
+      {
+        path: "addNewSlot",
+        element: <AddNewSlot></AddNewSlot>,
+      },
+      // Member route
+      {
+        path: "activityLogPage",
+        element: <ActivityLogPage></ActivityLogPage>,
+      },
+      {
+        path: "profilePage",
+        element: <ProfilePage></ProfilePage>,
+      },
+      {
+        path: "bookedTrainer",
+        element: <BookedTrainer></BookedTrainer>,
       },
     ],
   },

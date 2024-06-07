@@ -55,7 +55,7 @@ const NavBar = () => {
             {user ? (
               <>
                 <DropdownItem>{user?.displayName ?? "User Name"}</DropdownItem>
-                <DropdownItem>Dashboard</DropdownItem>
+                <DropdownItem href="/dashboard">Dashboard</DropdownItem>
                 <DropdownDivider />
                 <DropdownItem onClick={handleLogOut}>Log Out</DropdownItem>
               </>

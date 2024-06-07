@@ -23,6 +23,7 @@ import ActivityLogPage from "../Pages/Dash Board/Activity Log page/ActivityLogPa
 import ProfilePage from "../Pages/Dash Board/Profile Page/ProfilePage";
 import BookedTrainer from "../Pages/Dash Board/Booked Trainer/BookedTrainer";
 import BookingTrainer from "../Pages/Trainer Details Page/BookingTrainer";
+import PaymentPage from "../Pages/Payment Page/PaymentPage";
 
 export const router = createBrowserRouter([
   {
@@ -79,10 +80,14 @@ export const router = createBrowserRouter([
         path: "/bookingTrainer/:id/:slot",
         element: <BookingTrainer></BookingTrainer>,
       },
+      {
+        path: "/paymentPage/:packageName/:paymentData",
+        element: <PaymentPage></PaymentPage>,
+      },
     ],
   },
   {
-    path: "dashboard",
+    path: "/dashboard",
     element: (
       <PrivateRoute>
         <DashBoard></DashBoard>

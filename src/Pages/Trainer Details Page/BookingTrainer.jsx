@@ -12,9 +12,16 @@ const BookingTrainer = () => {
   return (
     <>
       {filteredTrainer.map((trainerDetails) => {
+        const paymentData = {
+          name: trainerDetails.name,
+          id: trainerDetails._id,
+          slot: param.slot,
+          time: trainerDetails.time,
+        };
+
         return (
           <div key={trainerDetails._id} className="my-10">
-            <h1 className="text-5xl text-center font-mono font-bold underline underline-offset-8">
+            <h1 className="text-5xl text-center font-mono font-bold underline underline-offset-8 decoration-cyan-400">
               Book the trainer
             </h1>
             <div className="flex flex-col gap-5 my-10">
@@ -87,7 +94,11 @@ const BookingTrainer = () => {
                   <p className="p-3 font-semibold text-xl border-b-2 border-cyan-400 h-14">
                     $10
                   </p>
-                  <Link to="/">
+                  <Link
+                    to={`/paymentPage/basic/${encodeURIComponent(
+                      JSON.stringify(paymentData)
+                    )}`}
+                  >
                     <p className="h-14 p-3 text-center font-semibold text-xl bg-cyan-400 hover:bg-cyan-400/75 duration-150">
                       Join Now
                     </p>
@@ -113,7 +124,11 @@ const BookingTrainer = () => {
                   <p className="p-3 font-semibold text-xl border-b-2 border-cyan-400 h-14">
                     $50
                   </p>
-                  <Link to="/">
+                  <Link
+                    to={`/paymentPage/standard/${encodeURIComponent(
+                      JSON.stringify(paymentData)
+                    )}`}
+                  >
                     <p className="h-14 p-3 text-center font-semibold text-xl bg-cyan-400 hover:bg-cyan-400/75 duration-150">
                       Join Now
                     </p>
@@ -140,7 +155,11 @@ const BookingTrainer = () => {
                   <p className="p-3 font-semibold text-xl border-b-2 border-cyan-400 h-14">
                     $100
                   </p>
-                  <Link to="/">
+                  <Link
+                    to={`/paymentPage/premium/${encodeURIComponent(
+                      JSON.stringify(paymentData)
+                    )}`}
+                  >
                     <p className="h-14 p-3 text-center font-semibold text-xl bg-cyan-400 hover:bg-cyan-400/75 duration-150">
                       Join Now
                     </p>

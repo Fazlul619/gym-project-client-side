@@ -1,13 +1,49 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const PaymentPage = () => {
   const { paymentData, packageName } = useParams();
   const parsedPaymentData = JSON.parse(decodeURIComponent(paymentData));
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
+  const price =
+    (packageName === "basic" && 10) ||
+    (packageName === "standard" && 50) ||
+    (packageName === "premium" && 100);
 
-  console.log(user);
+  const handlePayment = () => {
+    const paymentInfo = {
+      trainerName: parsedPaymentData?.name,
+      time: parsedPaymentData.time,
+      package: packageName,
+      price,
+      userName: user?.displayName,
+      userEmail: user?.email,
+    };
+    console.log(paymentInfo);
+    axiosSecure
+      .post("/paymentInfo", paymentInfo)
+      .then((res) => {
+        if (res.data.insertedId) {
+          console.log("payment successful");
+
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "payment successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   const bgColor =
     packageName === "basic"
@@ -107,6 +143,7 @@ const PaymentPage = () => {
         </div>
 
         <button
+          onClick={handlePayment}
           className={`text-xl px-2 py-3 rounded-md font-semibold ${
             packageName === "premium"
               ? "bg-yellow-200 hover:bg-yellow-200/75 duration-150"

@@ -136,9 +136,9 @@ const DashBoard = () => {
 
             <Link
               className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="allNewsletterSubscribers"
+              to="manageSlots"
             >
-              All Newsletter Subscribers
+              Manage Slots
             </Link>
           </div>
 
@@ -157,9 +157,9 @@ const DashBoard = () => {
 
             <Link
               className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="allTrainers"
+              to="addNewSlot"
             >
-              All Trainers
+              Add New slot
             </Link>
           </div>
 
@@ -169,7 +169,7 @@ const DashBoard = () => {
             alt="pipe icon"
           />
 
-          <div className="flex gap-3 items-center">
+          {/* <div className="flex gap-3 items-center">
             <img
               className="w-12"
               src="https://i.ibb.co/nfZt3B9/application.png"
@@ -182,7 +182,7 @@ const DashBoard = () => {
             >
               Applied Trainers
             </Link>
-          </div>
+          </div> */}
 
           <img
             className="w-12"
@@ -190,7 +190,7 @@ const DashBoard = () => {
             alt="pipe icon"
           />
 
-          <div className="flex gap-3 items-center">
+          {/* <div className="flex gap-3 items-center">
             <img
               className="w-12"
               src="https://i.ibb.co/9t5F8pW/balance-sheet.png"
@@ -203,7 +203,7 @@ const DashBoard = () => {
             >
               Balance
             </Link>
-          </div>
+          </div> */}
 
           <img
             className="w-12"
@@ -211,7 +211,7 @@ const DashBoard = () => {
             alt="pipe icon"
           />
 
-          <div className="flex gap-3 items-center">
+          {/* <div className="flex gap-3 items-center">
             <img
               className="w-12"
               src="https://i.ibb.co/YkmNzjX/file.png"
@@ -224,7 +224,7 @@ const DashBoard = () => {
             >
               Add new Class
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -240,9 +240,9 @@ const DashBoard = () => {
 
             <Link
               className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="allNewsletterSubscribers"
+              to="activityLogPage"
             >
-              All Newsletter Subscribers
+              Activity Log page
             </Link>
           </div>
 
@@ -261,9 +261,9 @@ const DashBoard = () => {
 
             <Link
               className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="allTrainers"
+              to="profilePage"
             >
-              All Trainers
+              Profile Page
             </Link>
           </div>
 
@@ -282,9 +282,9 @@ const DashBoard = () => {
 
             <Link
               className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="appliedTrainer"
+              to="bookedTrainer"
             >
-              Applied Trainers
+              Booked Trainer
             </Link>
           </div>
 
@@ -294,7 +294,7 @@ const DashBoard = () => {
             alt="pipe icon"
           />
 
-          <div className="flex gap-3 items-center">
+          {/* <div className="flex gap-3 items-center">
             <img
               className="w-12"
               src="https://i.ibb.co/9t5F8pW/balance-sheet.png"
@@ -307,7 +307,7 @@ const DashBoard = () => {
             >
               Balance
             </Link>
-          </div>
+          </div> */}
 
           <img
             className="w-12"
@@ -315,7 +315,7 @@ const DashBoard = () => {
             alt="pipe icon"
           />
 
-          <div className="flex gap-3 items-center">
+          {/* <div className="flex gap-3 items-center">
             <img
               className="w-12"
               src="https://i.ibb.co/YkmNzjX/file.png"
@@ -328,7 +328,7 @@ const DashBoard = () => {
             >
               Add new Class
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
       <Outlet />

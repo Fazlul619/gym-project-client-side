@@ -1,5 +1,5 @@
 const AddNewSlot = () => {
-  return <div></div>;
+  return <div>hello there</div>;
 };
 
 export default AddNewSlot;

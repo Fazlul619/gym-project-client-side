@@ -15,6 +15,7 @@ const BeATrainerPage = () => {
   const status = "pending";
   const [checkboxAll, setCheckboxAll] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedExpertise, setSelectedExpertise] = useState([]);
 
   const axiosSecure = useAxiosSecure();
   const handleTrainerSubmit = (event) => {
@@ -24,32 +25,34 @@ const BeATrainerPage = () => {
     const age = form.age.value;
     const profileImage = form.profileImage.value;
     const experience = form.experience.value;
-    const expertise = form.expertise.value;
+    const classes = form.classes.value;
     const details = form.details.value;
     const time = form.time.value;
-
+    const socialIconImage = form.socialIconImage.value;
     const trainerInfo = {
       name,
       email,
       age,
       profileImage,
       experience,
-      expertise,
+      classes,
       details,
       time,
       selectedOptions,
       checkboxAll,
       status,
+      selectedExpertise,
+      socialIconImage,
     };
 
     form.name.value = "";
     form.age.value = "";
     form.profileImage.value = "";
     form.experience.value = "";
-    form.expertise.value = "";
+    form.classes.value = "";
     form.details.value = "";
     form.time.value = "";
-
+    form.socialIconImage.value = "";
     // console.log(trainerInfo);
     axiosSecure
       .post("/trainerInfo", trainerInfo)
@@ -76,6 +79,9 @@ const BeATrainerPage = () => {
   const handleSelectChange = (selectedOptions) => {
     setSelectedOptions(selectedOptions);
   };
+  const handleSelectChangeExpertise = (selectedExpertise) => {
+    setSelectedExpertise(selectedExpertise);
+  };
 
   const handleCheckbox = (e) => {
     if (e.target.checked) {
@@ -93,6 +99,21 @@ const BeATrainerPage = () => {
     { value: "Wednesday", label: "Wednesday" },
     { value: "Thursday", label: "Thursday" },
     { value: "Friday", label: "Friday" },
+  ];
+  const expertise = [
+    { value: "Yoga", label: "Yoga" },
+    { value: "Pilates", label: "Pilates" },
+    { value: "Strength Training", label: "Strength Training" },
+    { value: "HIIT", label: "HIIT" },
+    { value: "Cardio", label: "Cardio" },
+    { value: "Kickboxing", label: "Kickboxing" },
+    { value: "Nutrition", label: "Nutrition" },
+    { value: "Personal Training", label: "Personal Training" },
+    { value: "Zumba", label: "Zumba" },
+    { value: "Aerobics", label: "Aerobics" },
+    { value: "Meditation", label: "Meditation" },
+    { value: "Mindfulness", label: "Mindfulness" },
+    { value: "Stress Relief", label: "Stress Relief" },
   ];
   return (
     <div className="my-10">
@@ -171,12 +192,22 @@ const BeATrainerPage = () => {
                   />
                 </div>
                 <div className="text-left">
-                  <Label value="Expertise" />
+                  <Label value="Your Social Icon Url" />
                   <input
                     type="text"
-                    name="expertise"
+                    name="socialIconImage"
                     className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]"
-                    placeholder="Example: Yoga"
+                    placeholder="Social Icon Image"
+                    required=""
+                  />
+                </div>
+                <div className="text-left">
+                  <Label value="Class" />
+                  <input
+                    type="text"
+                    name="classes"
+                    className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]"
+                    placeholder="Example:Morning Yoga"
                     required=""
                   />
                 </div>
@@ -201,13 +232,29 @@ const BeATrainerPage = () => {
                   />
                 </div>
                 {/* Available Week */}
-                <Select
-                  closeMenuOnSelect={false}
-                  components={animatedComponents}
-                  isMulti
-                  options={options}
-                  onChange={handleSelectChange}
-                />
+                <div className="text-left">
+                  <Label value="Day" />
+                  <Select
+                    closeMenuOnSelect={false}
+                    components={animatedComponents}
+                    isMulti
+                    options={options}
+                    onChange={handleSelectChange}
+                  />
+                </div>
+
+                {/* Expertise */}
+                <div className="text-left">
+                  <Label value="Expertise" />
+                  <Select
+                    closeMenuOnSelect={false}
+                    components={animatedComponents}
+                    isMulti
+                    options={expertise}
+                    onChange={handleSelectChangeExpertise}
+                  />
+                </div>
+
                 {/* Check Box */}
                 <div
                   className="flex max-w-md flex-col gap-4 mb-4"

@@ -1,10 +1,20 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useUser from "../../../hooks/useUser";
+import useCurrentUserRole from "../../../hooks/useCurrentUserRole";
 
 export const OnlyForAdmin = ({ children }) => {
+  //currently logged in user
   const { user } = useContext(AuthContext);
 
-  if (user.role === "admin") {
+  //users with role
+  const [users] = useUser();
+
+  //getting the role of the current user
+  const currentUserRole = useCurrentUserRole(user, users);
+  console.log(currentUserRole);
+
+  if (currentUserRole === "admin") {
     return children;
   }
 
@@ -12,9 +22,16 @@ export const OnlyForAdmin = ({ children }) => {
 };
 
 export const OnlyForTrainer = ({ children }) => {
+  //currently logged in user
   const { user } = useContext(AuthContext);
 
-  if (user.role === "trainer") {
+  //users with role
+  const [users] = useUser();
+
+  //getting the role of the current user
+  const currentUserRole = useCurrentUserRole(user, users);
+
+  if (currentUserRole === "trainer") {
     return children;
   }
 
@@ -22,9 +39,33 @@ export const OnlyForTrainer = ({ children }) => {
 };
 
 export const OnlyForMember = ({ children }) => {
+  //currently logged in user
   const { user } = useContext(AuthContext);
 
-  if (user.role === "member") {
+  //users with role
+  const [users] = useUser();
+
+  //getting the role of the current user
+  const currentUserRole = useCurrentUserRole(user, users);
+
+  if (currentUserRole === "member") {
+    return children;
+  }
+
+  return null;
+};
+
+export const OnlyForAdminAndTrainer = ({ children }) => {
+  //currently logged in user
+  const { user } = useContext(AuthContext);
+
+  //users with role
+  const [users] = useUser();
+
+  //getting the role of the current user
+  const currentUserRole = useCurrentUserRole(user, users);
+
+  if ((currentUserRole === "admin") | "trainer") {
     return children;
   }
 

@@ -7,10 +7,10 @@ const TrainerDetailsPage = () => {
     email,
     details,
     experience,
-    expertise,
+    selectedExpertise,
     profileImage,
     selectedOptions,
-    time,
+
     _id,
   } = trainer;
 
@@ -56,7 +56,18 @@ const TrainerDetailsPage = () => {
               alt=""
             />
 
-            <p className="text-xl font-bold">{expertise}</p>
+            <div className="flex gap-3 flex-col">
+              {selectedExpertise.map((expertise) => {
+                return (
+                  <span
+                    key={expertise.value}
+                    className="bg-black px-2 py-1 rounded-sm font-bold text-white"
+                  >
+                    {expertise.value}
+                  </span>
+                );
+              })}
+            </div>
           </div>
         </div>
         <p className="text-blue-600 font-bold font-serif">

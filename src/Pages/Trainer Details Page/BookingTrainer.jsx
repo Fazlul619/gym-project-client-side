@@ -57,7 +57,7 @@ const BookingTrainer = () => {
                 />
                 <p className="text-2xl font-semibold">
                   <span className="font-bold">Classes:</span>{" "}
-                  {trainerDetails.expertise}
+                  {trainerDetails.classes}
                 </p>
               </div>
             </div>

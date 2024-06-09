@@ -1,4 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
+import {
+  OnlyForAdmin,
+  OnlyForAdminAndTrainer,
+  OnlyForMember,
+  OnlyForTrainer,
+} from "./HideLinks";
 
 const DashBoard = () => {
   return (
@@ -22,91 +28,110 @@ const DashBoard = () => {
           </div>
         </div>
 
-        <div className="flex">
-          <div className="flex gap-3 items-center">
+        <OnlyForAdmin>
+          <div className="flex">
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/tHk0f5Q/subscriber.png"
+                alt="subscribers icon"
+              />
+
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="allNewsletterSubscribers"
+              >
+                All Newsletter Subscribers
+              </Link>
+            </div>
+
             <img
               className="w-12"
-              src="https://i.ibb.co/tHk0f5Q/subscriber.png"
-              alt="subscribers icon"
+              src="https://i.ibb.co/dkXjcJs/pipe.png"
+              alt="pipe icon"
             />
 
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="allNewsletterSubscribers"
-            >
-              All Newsletter Subscribers
-            </Link>
-          </div>
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/HHHnz6D/class.png"
+                alt="trainers icon"
+              />
 
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="allTrainers"
+              >
+                All Trainers
+              </Link>
+            </div>
 
-          <div className="flex gap-3 items-center">
             <img
               className="w-12"
-              src="https://i.ibb.co/HHHnz6D/class.png"
-              alt="trainers icon"
+              src="https://i.ibb.co/dkXjcJs/pipe.png"
+              alt="pipe icon"
             />
 
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="allTrainers"
-            >
-              All Trainers
-            </Link>
-          </div>
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/nfZt3B9/application.png"
+                alt="applied trainer icon"
+              />
 
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="appliedTrainer"
+              >
+                Applied Trainers
+              </Link>
+            </div>
 
-          <div className="flex gap-3 items-center">
             <img
               className="w-12"
-              src="https://i.ibb.co/nfZt3B9/application.png"
-              alt="applied trainer icon"
+              src="https://i.ibb.co/dkXjcJs/pipe.png"
+              alt="pipe icon"
             />
 
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="appliedTrainer"
-            >
-              Applied Trainers
-            </Link>
-          </div>
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/9t5F8pW/balance-sheet.png"
+                alt="balance icon"
+              />
 
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="balance"
+              >
+                Balance
+              </Link>
+            </div>
 
-          <div className="flex gap-3 items-center">
             <img
               className="w-12"
-              src="https://i.ibb.co/9t5F8pW/balance-sheet.png"
-              alt="balance icon"
+              src="https://i.ibb.co/dkXjcJs/pipe.png"
+              alt="pipe icon"
             />
 
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="balance"
-            >
-              Balance
-            </Link>
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/YkmNzjX/file.png"
+                alt="balance icon"
+              />
+
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="addNewClass"
+              >
+                Add new Class
+              </Link>
+            </div>
           </div>
+        </OnlyForAdmin>
 
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
-
+        <OnlyForAdminAndTrainer>
           <div className="flex gap-3 items-center">
             <img
               className="w-12"
@@ -116,222 +141,130 @@ const DashBoard = () => {
 
             <Link
               className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="addNewClass"
+              to="addNewForum"
             >
-              Add new Class
+              Add new Forum
             </Link>
           </div>
-        </div>
+        </OnlyForAdminAndTrainer>
       </div>
 
       {/*Options for Trainer */}
-      <div className="flex flex-col gap-5 mt-5">
-        <div className="flex">
-          <div className="flex gap-3 items-center">
+      <OnlyForTrainer>
+        <div className="flex flex-col gap-5 mt-5">
+          <div className="flex">
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/tHk0f5Q/subscriber.png"
+                alt="subscribers icon"
+              />
+
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="manageSlots"
+              >
+                Manage Slots
+              </Link>
+            </div>
+
             <img
               className="w-12"
-              src="https://i.ibb.co/tHk0f5Q/subscriber.png"
-              alt="subscribers icon"
+              src="https://i.ibb.co/dkXjcJs/pipe.png"
+              alt="pipe icon"
             />
 
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="manageSlots"
-            >
-              Manage Slots
-            </Link>
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/HHHnz6D/class.png"
+                alt="trainers icon"
+              />
+
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="addNewSlot"
+              >
+                Add New slot
+              </Link>
+            </div>
           </div>
-
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
-
-          <div className="flex gap-3 items-center">
-            <img
-              className="w-12"
-              src="https://i.ibb.co/HHHnz6D/class.png"
-              alt="trainers icon"
-            />
-
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="addNewSlot"
-            >
-              Add New slot
-            </Link>
-          </div>
-
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
-
-          {/* <div className="flex gap-3 items-center">
-            <img
-              className="w-12"
-              src="https://i.ibb.co/nfZt3B9/application.png"
-              alt="applied trainer icon"
-            />
-
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="appliedTrainer"
-            >
-              Applied Trainers
-            </Link>
-          </div> */}
-
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
-
-          {/* <div className="flex gap-3 items-center">
-            <img
-              className="w-12"
-              src="https://i.ibb.co/9t5F8pW/balance-sheet.png"
-              alt="balance icon"
-            />
-
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="balance"
-            >
-              Balance
-            </Link>
-          </div> */}
-
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
-
-          {/* <div className="flex gap-3 items-center">
-            <img
-              className="w-12"
-              src="https://i.ibb.co/YkmNzjX/file.png"
-              alt="balance icon"
-            />
-
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="addNewClass"
-            >
-              Add new Class
-            </Link>
-          </div> */}
         </div>
-      </div>
+      </OnlyForTrainer>
 
       {/* Options for Members */}
-      <div className="flex flex-col gap-5 mt-5">
-        <div className="flex">
-          <div className="flex gap-3 items-center">
+      <OnlyForMember>
+        <div className="flex flex-col gap-5 mt-5">
+          <div className="flex">
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/tHk0f5Q/subscriber.png"
+                alt="subscribers icon"
+              />
+
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="activityLogPage"
+              >
+                Activity Log page
+              </Link>
+            </div>
+
             <img
               className="w-12"
-              src="https://i.ibb.co/tHk0f5Q/subscriber.png"
-              alt="subscribers icon"
+              src="https://i.ibb.co/dkXjcJs/pipe.png"
+              alt="pipe icon"
             />
 
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="activityLogPage"
-            >
-              Activity Log page
-            </Link>
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/HHHnz6D/class.png"
+                alt="trainers icon"
+              />
+
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="profilePage"
+              >
+                Profile Page
+              </Link>
+            </div>
+
+            <img
+              className="w-12"
+              src="https://i.ibb.co/dkXjcJs/pipe.png"
+              alt="pipe icon"
+            />
+
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/nfZt3B9/application.png"
+                alt="applied trainer icon"
+              />
+
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="bookedTrainer"
+              >
+                Booked Trainer
+              </Link>
+            </div>
           </div>
-
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
-
-          <div className="flex gap-3 items-center">
-            <img
-              className="w-12"
-              src="https://i.ibb.co/HHHnz6D/class.png"
-              alt="trainers icon"
-            />
-
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="profilePage"
-            >
-              Profile Page
-            </Link>
-          </div>
-
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
-
-          <div className="flex gap-3 items-center">
-            <img
-              className="w-12"
-              src="https://i.ibb.co/nfZt3B9/application.png"
-              alt="applied trainer icon"
-            />
-
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="bookedTrainer"
-            >
-              Booked Trainer
-            </Link>
-          </div>
-
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
-
-          {/* <div className="flex gap-3 items-center">
-            <img
-              className="w-12"
-              src="https://i.ibb.co/9t5F8pW/balance-sheet.png"
-              alt="balance icon"
-            />
-
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="balance"
-            >
-              Balance
-            </Link>
-          </div> */}
-
-          <img
-            className="w-12"
-            src="https://i.ibb.co/dkXjcJs/pipe.png"
-            alt="pipe icon"
-          />
-
-          {/* <div className="flex gap-3 items-center">
-            <img
-              className="w-12"
-              src="https://i.ibb.co/YkmNzjX/file.png"
-              alt="balance icon"
-            />
-
-            <Link
-              className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
-              to="addNewClass"
-            >
-              Add new Class
-            </Link>
-          </div> */}
         </div>
-      </div>
+      </OnlyForMember>
+
       <Outlet />
+
+      {/* <div className="flex items-center justify-center">
+        <img
+          className="w-[60vh]"
+          src="https://i.ibb.co/bBhCrT3/Welcome-cuate.png"
+          alt=""
+        />
+      </div> */}
     </div>
   );
 };

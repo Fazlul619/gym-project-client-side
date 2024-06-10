@@ -1,24 +1,29 @@
 import { Button, Label } from "flowbite-react";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const AddNewClass = () => {
+  const axiosPublic = useAxiosPublic();
   const handleAddNewClasses = (event) => {
     event.preventDefault();
     const form = event.target;
+    const className = form.className.value;
     const image = form.image.value;
     const details = form.details.value;
 
     const classInfo = {
+      className,
       image,
       details,
     };
 
+    form.className.value = "";
     form.image.value = "";
     form.details.value = "";
 
     // console.log(trainerInfo);
-    useAxiosSecure
+    axiosPublic
       .post("/allClass", classInfo)
       .then((res) => {
         if (res.data.insertedId) {
@@ -60,6 +65,16 @@ const AddNewClass = () => {
                 name="wf-form-password"
                 method="get"
               >
+                <div className="text-left">
+                  <Label value="Class Name" />
+                  <input
+                    type="text"
+                    name="className"
+                    className="mb-4 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 text-sm text-[#333333]"
+                    placeholder="Example:Yoga "
+                    required=""
+                  />
+                </div>
                 <div className="text-left">
                   <Label value="Class Image" />
                   <input

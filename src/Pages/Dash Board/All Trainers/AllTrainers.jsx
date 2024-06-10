@@ -31,6 +31,7 @@ const AllTrainers = () => {
           timer: 1500,
         });
       }
+      closeModal();
     });
   };
 
@@ -68,7 +69,7 @@ const AllTrainers = () => {
 
             {isOpen && (
               <Modal isOpen={isOpen} onClose={closeModal}>
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-5 p-4">
                   <div>
                     <h1 className="text-2xl font-semibold font-mono">
                       Are you sure?

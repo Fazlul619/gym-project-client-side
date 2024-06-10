@@ -78,7 +78,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/bookingTrainer/:id/:slot",
-        element: <BookingTrainer></BookingTrainer>,
+        element: (
+          <PrivateRoute>
+            <BookingTrainer></BookingTrainer>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/paymentPage/:packageName/:paymentData",
@@ -138,6 +142,8 @@ export const router = createBrowserRouter([
       {
         path: "profilePage",
         element: <ProfilePage></ProfilePage>,
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/users/${params.email}`),
       },
       {
         path: "bookedTrainer",

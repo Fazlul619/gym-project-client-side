@@ -5,7 +5,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-20">
-      <div className="bg-white p-4 rounded shadow-lg">
+      <div className="bg-white rounded shadow-lg">
         <button
           className="absolute top-2 right-2 text-gray-500"
           onClick={onClose}

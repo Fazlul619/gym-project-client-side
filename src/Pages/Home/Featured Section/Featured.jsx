@@ -2,7 +2,9 @@ const Featured = () => {
   return (
     <div>
       <div>
-        <h1 className="text-3xl text-center  pt-3 pb-3 ">Cards Practice</h1>
+        <h1 className="text-3xl font-bold text-center tracking-tight text-gray-900 dark:text-white p-4">
+          Featured section
+        </h1>
 
         <div className="products-container ">
           <div className="product-items grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-1 ">
@@ -17,26 +19,15 @@ const Featured = () => {
               </div>
               <div className="item-text  pb-10">
                 <h1 className="text-3xl font-bold text-black">
-                  Lorem ipsum dolor sit amet.
+                  Online Class Booking
                 </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Adipisci laborum fugit ea quos, quidem ad. Nihil commodi ipsa
-                  doloribus aliquam.
+                <p className="font-normal text-gray-700 dark:text-gray-400">
+                  Allow members to easily book classes online through an
+                  intuitive calendar interface. Members can view available
+                  classes, choose their preferred time slots, and receive email
+                  confirmations of their bookings.
                 </p>
               </div>
-              {/* see-more-option-start */}
-              <div className="  absolute bottom-3 right-4">
-                <button className=" px-2 py-1 bg-green-300  rounded">
-                  <a
-                    href="#"
-                    className="flex flex-row items-center justify-center gap-2 "
-                  >
-                    see more
-                  </a>
-                </button>
-              </div>
-              {/* see-more-option-end */}
             </div>
             {/* products-item-end */}
             {/* product-item-start */}
@@ -50,26 +41,15 @@ const Featured = () => {
               </div>
               <div className="item-text  pb-10">
                 <h1 className="text-3xl font-bold text-black">
-                  Lorem ipsum dolor sit amet.
+                  Virtual Training Sessions
                 </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Adipisci laborum fugit ea quos, quidem ad. Nihil commodi ipsa
-                  doloribus aliquam.
+                <p className="font-normal text-gray-700 dark:text-gray-400">
+                  Offer virtual training sessions that members can join from the
+                  comfort of their homes. These sessions can be live-streamed or
+                  pre-recorded, allowing flexibility for members to train at
+                  their convenience.
                 </p>
               </div>
-              {/* see-more-option-start */}
-              <div className="  absolute bottom-3 right-4">
-                <button className=" px-2 py-1 bg-green-300  rounded">
-                  <a
-                    href="#"
-                    className="flex flex-row items-center justify-center gap-2 "
-                  >
-                    see more
-                  </a>
-                </button>
-              </div>
-              {/* see-more-option-end */}
             </div>
             {/* products-item-end */}
             {/* product-item-start */}
@@ -83,26 +63,15 @@ const Featured = () => {
               </div>
               <div className="item-text  pb-10">
                 <h1 className="text-3xl font-bold text-black">
-                  Lorem ipsum dolor sit amet.
+                  Personalized Workout Plans
                 </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Adipisci laborum fugit ea quos, quidem ad. Nihil commodi ipsa
-                  doloribus aliquam.
+                <p className="font-normal text-gray-700 dark:text-gray-400">
+                  Provide personalized workout plans based on individual fitness
+                  goals and levels. Users can input their goals, and the system
+                  will generate tailored workout routines, including video
+                  demonstrations and progress tracking.
                 </p>
               </div>
-              {/* see-more-option-start */}
-              <div className="  absolute bottom-3 right-4">
-                <button className=" px-2 py-1 bg-green-300  rounded">
-                  <a
-                    href="#"
-                    className="flex flex-row items-center justify-center gap-2 "
-                  >
-                    see more
-                  </a>
-                </button>
-              </div>
-              {/* see-more-option-end */}
             </div>
             {/* products-item-end */}
             {/* product-item-start */}
@@ -116,26 +85,15 @@ const Featured = () => {
               </div>
               <div className="item-text  pb-10">
                 <h1 className="text-3xl font-bold text-black">
-                  Lorem ipsum dolor sit amet.
+                  Nutrition Guidance
                 </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Adipisci laborum fugit ea quos, quidem ad. Nihil commodi ipsa
-                  doloribus aliquam.
+                <p className="font-normal text-gray-700 dark:text-gray-400">
+                  Include a section dedicated to nutrition guidance where
+                  members can access meal plans, healthy recipes, and tips from
+                  professional nutritionists. This feature supports members in
+                  achieving their fitness goals holistically.Nutrition
                 </p>
               </div>
-              {/* see-more-option-start */}
-              <div className="  absolute bottom-3 right-4">
-                <button className=" px-2 py-1 bg-green-300  rounded">
-                  <a
-                    href="#"
-                    className="flex flex-row items-center justify-center gap-2 "
-                  >
-                    see more
-                  </a>
-                </button>
-              </div>
-              {/* see-more-option-end */}
             </div>
             {/* products-item-end */}
             {/* product-item-start */}
@@ -149,26 +107,16 @@ const Featured = () => {
               </div>
               <div className="item-text  pb-10">
                 <h1 className="text-3xl font-bold text-black">
-                  Lorem ipsum dolor sit amet.
+                  Membership Management
                 </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Adipisci laborum fugit ea quos, quidem ad. Nihil commodi ipsa
-                  doloribus aliquam.
+                <p className="font-normal text-gray-700 dark:text-gray-400">
+                  Simplify membership management with an online portal where
+                  members can sign up, renew, or upgrade their memberships.
+                  Members can also update their personal information, view
+                  billing history, and manage their subscriptions.
                 </p>
               </div>
               {/* see-more-option-start */}
-              <div className="  absolute bottom-3 right-4">
-                <button className=" px-2 py-1 bg-green-300  rounded">
-                  <a
-                    href="#"
-                    className="flex flex-row items-center justify-center gap-2 "
-                  >
-                    see more
-                  </a>
-                </button>
-              </div>
-              {/* see-more-option-end */}
             </div>
             {/* products-item-end */}
             {/* product-item-start */}
@@ -182,26 +130,15 @@ const Featured = () => {
               </div>
               <div className="item-text  pb-10">
                 <h1 className="text-3xl font-bold text-black">
-                  Lorem ipsum dolor sit amet.
+                  Community Forum
                 </h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Adipisci laborum fugit ea quos, quidem ad. Nihil commodi ipsa
-                  doloribus aliquam.
+                <p className="font-normal text-gray-700 dark:text-gray-400">
+                  Foster a sense of community with a forum where members can
+                  share experiences, ask questions, and offer support. This
+                  feature encourages engagement and helps members stay motivated
+                  by connecting with others who have similar fitness goals.
                 </p>
               </div>
-              {/* see-more-option-start */}
-              <div className="  absolute bottom-3 right-4">
-                <button className=" px-2 py-1 bg-green-300  rounded">
-                  <a
-                    href="#"
-                    className="flex flex-row items-center justify-center gap-2 "
-                  >
-                    see more
-                  </a>
-                </button>
-              </div>
-              {/* see-more-option-end */}
             </div>
             {/* products-item-end */}
           </div>

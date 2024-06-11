@@ -12,7 +12,6 @@ export const OnlyForAdmin = ({ children }) => {
 
   //getting the role of the current user
   const currentUserRole = useCurrentUserRole(user, users);
-  console.log(currentUserRole);
 
   if (currentUserRole === "admin") {
     return children;

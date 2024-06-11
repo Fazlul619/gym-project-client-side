@@ -7,6 +7,7 @@ import makeAnimated from "react-select/animated";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAllClasses from "../../hooks/useAllClasses";
 
 const BeATrainerPage = () => {
   const animatedComponents = makeAnimated();
@@ -16,6 +17,8 @@ const BeATrainerPage = () => {
   const [checkboxAll, setCheckboxAll] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [selectedExpertise, setSelectedExpertise] = useState([]);
+
+  const [allClasses] = useAllClasses();
 
   const axiosSecure = useAxiosSecure();
   const handleTrainerSubmit = (event) => {
@@ -100,21 +103,35 @@ const BeATrainerPage = () => {
     { value: "Thursday", label: "Thursday" },
     { value: "Friday", label: "Friday" },
   ];
-  const expertise = [
-    { value: "Yoga", label: "Yoga" },
-    { value: "Pilates", label: "Pilates" },
-    { value: "Strength Training", label: "Strength Training" },
-    { value: "HIIT", label: "HIIT" },
-    { value: "Cardio", label: "Cardio" },
-    { value: "Kickboxing", label: "Kickboxing" },
-    { value: "Nutrition", label: "Nutrition" },
-    { value: "Personal Training", label: "Personal Training" },
-    { value: "Zumba", label: "Zumba" },
-    { value: "Aerobics", label: "Aerobics" },
-    { value: "Meditation", label: "Meditation" },
-    { value: "Mindfulness", label: "Mindfulness" },
-    { value: "Stress Relief", label: "Stress Relief" },
-  ];
+
+  const expertise = allClasses.map((cls) => ({
+    value: cls.className.toLowerCase(),
+    label: cls.className,
+  }));
+
+  console.log(expertise);
+
+  // const finalExpertise = expertiseLabels.forEach((expertise) => {
+  //   expertiseLabels.push({ value: expertise, expertise });
+  // });
+
+  // console.log(finalExpertise);
+
+  // const expertise = [
+  //   { value: "Yoga", label: "Yoga" },
+  //   { value: "Pilates", label: "Pilates" },
+  //   { value: "Strength Training", label: "Strength Training" },
+  //   { value: "HIIT", label: "HIIT" },
+  //   { value: "Cardio", label: "Cardio" },
+  //   { value: "Kickboxing", label: "Kickboxing" },
+  //   { value: "Nutrition", label: "Nutrition" },
+  //   { value: "Personal Training", label: "Personal Training" },
+  //   { value: "Zumba", label: "Zumba" },
+  //   { value: "Aerobics", label: "Aerobics" },
+  //   { value: "Meditation", label: "Meditation" },
+  //   { value: "Mindfulness", label: "Mindfulness" },
+  //   { value: "Stress Relief", label: "Stress Relief" },
+  // ];
   return (
     <div className="my-10">
       {/* Section SING IN */}

@@ -167,13 +167,11 @@ const DashBoard = () => {
                 Manage Slots
               </Link>
             </div>
-
             <img
               className="w-12"
               src="https://i.ibb.co/dkXjcJs/pipe.png"
               alt="pipe icon"
             />
-
             <div className="flex gap-3 items-center">
               <img
                 className="w-12"
@@ -186,6 +184,27 @@ const DashBoard = () => {
                 to="addNewSlot"
               >
                 Add New slot
+              </Link>
+            </div>
+
+            <img
+              className="w-12"
+              src="https://i.ibb.co/dkXjcJs/pipe.png"
+              alt="pipe icon"
+            />
+
+            <div className="flex gap-3 items-center">
+              <img
+                className="w-12"
+                src="https://i.ibb.co/YkmNzjX/file.png"
+                alt="balance icon"
+              />
+
+              <Link
+                className="text-xl bg-orange-200 hover:bg-orange-200/80 duration-100 px-4 py-2 font-semibold rounded-sm text-center"
+                to="addNewForum"
+              >
+                Add new Forum
               </Link>
             </div>
           </div>

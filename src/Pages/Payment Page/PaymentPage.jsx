@@ -13,7 +13,7 @@ const PaymentPage = () => {
     (packageName === "basic" && 10) ||
     (packageName === "standard" && 50) ||
     (packageName === "premium" && 100);
-  console.log(paymentData);
+
   const handlePayment = () => {
     const paymentInfo = {
       trainerName: parsedPaymentData?.name,
@@ -23,8 +23,8 @@ const PaymentPage = () => {
       userName: user?.displayName,
       userEmail: user?.email,
       slot: parsedPaymentData.slot,
+      trainerEmail: parsedPaymentData.trainerEmail,
     };
-    console.log(paymentInfo);
     axiosSecure
       .post("/paymentInfo", paymentInfo)
       .then((res) => {

@@ -17,6 +17,7 @@ const BookingTrainer = () => {
           id: trainerDetails._id,
           slot: param.slot,
           time: trainerDetails.time,
+          trainerEmail: trainerDetails.email,
         };
 
         return (

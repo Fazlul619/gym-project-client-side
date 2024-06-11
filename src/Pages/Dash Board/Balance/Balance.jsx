@@ -1,6 +1,6 @@
 import useAllNewsletterSubscriber from "../../../hooks/useAllNewsletterSubscriber";
 import usePaymentInfo from "../../../hooks/usePaymentInfo";
-import React from "react";
+
 import {
   BarChart,
   Bar,

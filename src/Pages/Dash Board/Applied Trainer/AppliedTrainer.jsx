@@ -18,6 +18,32 @@ const AppliedTrainer = () => {
     (trainer) => trainer.status === "pending"
   );
 
+  const handleReject = (selectedTrainer) => {
+    const messageInfo = {
+      rejectionMessage,
+    };
+
+    axiosSecure
+      .patch(
+        `/trainerInfoByEmailWithRejected/${selectedTrainer.email}`,
+        messageInfo
+      )
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${selectedTrainer.name} is a Trainer Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+        closeModal();
+        refresh();
+      });
+  };
+
   const { isOpen, openModal, closeModal, selectedId } = useModal();
   const { isSecondModalOpen, closeSecondModal, openSecondModal } =
     useSecondModal();
@@ -252,7 +278,10 @@ const AppliedTrainer = () => {
                           ></textarea>
 
                           <div className="flex items-center justify-end gap-5">
-                            <button className="text-end bg-rose-500/70 max-w-fit px-4 py-2 rounded-sm">
+                            <button
+                              onClick={() => handleReject(selectedTrainer)}
+                              className="text-end bg-rose-500/70 max-w-fit px-4 py-2 rounded-sm"
+                            >
                               Reject
                             </button>
                             <button

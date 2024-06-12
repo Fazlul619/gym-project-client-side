@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import Newsletter from "../Newsletter/Newsletter";
 import Featured from "../Featured Section/Featured";
 import Testimonial from "../Testimonial/Testimonial";
+import Team from "../Team section/Team";
 const Home = () => {
   return (
     <div>
@@ -15,6 +16,8 @@ const Home = () => {
       <About></About>
       <Newsletter></Newsletter>
       <Testimonial></Testimonial>
+
+      <Team />
     </div>
   );
 };

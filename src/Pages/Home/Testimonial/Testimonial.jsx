@@ -18,31 +18,38 @@ const Testimonial = () => {
   }, []);
 
   return (
-    <section className="my-20">
-      <Swiper
-        cssMode={true}
-        navigation={true}
-        pagination={true}
-        mousewheel={true}
-        keyboard={true}
-        modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className="mySwiper"
-      >
-        {reviews.map((review) => (
-          <SwiperSlide key={review._id}>
-            <div className="flex flex-col items-center mx-24 my-16">
-              <Rating
-                style={{ maxWidth: 180 }}
-                value={review.rating}
-                readOnly
-              />
-              <p className="py-8">{review.details}</p>
-              <h3 className="text-2xl text-orange-400">{review.name}</h3>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </section>
+    <div className="my-10">
+      <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white p-4 text-center">
+        Reviews
+      </h1>
+      <section className="my-20">
+        <Swiper
+          cssMode={true}
+          navigation={true}
+          pagination={true}
+          mousewheel={true}
+          keyboard={true}
+          modules={[Navigation, Pagination, Mousewheel, Keyboard]}
+          className="mySwiper"
+        >
+          {reviews.map((review) => (
+            <SwiperSlide key={review._id}>
+              <div className="flex flex-col items-center mx-24 my-16">
+                <Rating
+                  style={{ maxWidth: 180 }}
+                  value={review.rating}
+                  readOnly
+                />
+                <p className="py-8">{review.details}</p>
+                <h3 className="text-2xl text-orange-400">
+                  {review.trainerInfo}
+                </h3>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+    </div>
   );
 };
 

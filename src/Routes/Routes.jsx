@@ -24,6 +24,7 @@ import ProfilePage from "../Pages/Dash Board/Profile Page/ProfilePage";
 import BookedTrainer from "../Pages/Dash Board/Booked Trainer/BookedTrainer";
 import BookingTrainer from "../Pages/Trainer Details Page/BookingTrainer";
 import PaymentPage from "../Pages/Payment Page/PaymentPage";
+import ForumDetails from "../Pages/Forum Details/ForumDetails";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,12 @@ export const router = createBrowserRouter([
       {
         path: "/forumsPage",
         element: <ForumsPage></ForumsPage>,
+      },
+      {
+        path: "/forumDetails/:id",
+        element: <ForumDetails></ForumDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allForumPost/${params.id}`),
       },
       {
         path: "/login",

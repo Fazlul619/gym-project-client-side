@@ -23,7 +23,7 @@ const DashBoard = () => {
 
           <div>
             <p className="text-3xl font-bold underline underline-offset-4 decoration-cyan-400 font-serif">
-              Hi, Admin
+              Welcome To Dashboard
             </p>
           </div>
         </div>

@@ -54,6 +54,7 @@ const AppliedTrainer = () => {
 
   const axiosSecure = useAxiosSecure();
   const handleTrainerAccept = (selectedTrainer) => {
+    console.log("baal");
     axiosSecure
       .patch(`/trainerInfoByEmail/${selectedTrainer.email}`)
       .then((res) => {

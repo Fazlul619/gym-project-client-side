@@ -19,6 +19,7 @@ const NavBar = () => {
       .then(() => {})
       .catch((error) => console.log(error));
   };
+
   return (
     <div>
       <Navbar fluid rounded>
@@ -29,9 +30,7 @@ const NavBar = () => {
           </span>
         </NavbarBrand>
         <NavbarCollapse>
-          <NavbarLink href="/" active>
-            Home
-          </NavbarLink>
+          <NavbarLink href="/">Home</NavbarLink>
           <NavbarLink href="/allClassesPage">All Classes Page</NavbarLink>
           <NavbarLink href="/allTrainerPage">All Trainer Page</NavbarLink>
           <NavbarLink href="/forumsPage">Forums Page</NavbarLink>

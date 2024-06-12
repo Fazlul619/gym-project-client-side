@@ -5,6 +5,7 @@ import Newsletter from "../Newsletter/Newsletter";
 import Featured from "../Featured Section/Featured";
 import Testimonial from "../Testimonial/Testimonial";
 import Team from "../Team section/Team";
+import ForumPosts from "../Forum Posts/ForumPosts";
 const Home = () => {
   return (
     <div>
@@ -14,9 +15,9 @@ const Home = () => {
       <Banner></Banner>
       <Featured></Featured>
       <About></About>
-      <Newsletter></Newsletter>
       <Testimonial></Testimonial>
-
+      <ForumPosts></ForumPosts>
+      <Newsletter></Newsletter>
       <Team />
     </div>
   );

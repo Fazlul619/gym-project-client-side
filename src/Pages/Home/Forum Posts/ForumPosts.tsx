@@ -1,13 +1,15 @@
-import useForum from "../../hooks/useForum";
-import { Card } from "flowbite-react";
+import React from "react";
+import useForum from "../../../hooks/useForum";
+import { Link } from "react-router-dom";
+import { Button, Card } from "flowbite-react";
 
-const ForumsPage = () => {
+const ForumPosts = () => {
   const [allForums] = useForum();
 
   console.log(allForums);
 
   return (
-    <div className="grid grid-cols-4 gap-5 place-items-center my-10">
+    <div className="grid grid-cols-4 gap-5 place-items-center">
       {allForums.slice(0, 5).map((post) => {
         return (
           <Card className="max-w-sm" key={post._id}>
@@ -17,6 +19,12 @@ const ForumsPage = () => {
             <p className="font-normal text-gray-700 dark:text-gray-400 line-clamp-6">
               {post.details}
             </p>
+            <Link
+              to={`/forumDetails/${post._id}`}
+              className="bg-cyan-400 rounded-md text-center py-2"
+            >
+              Read more
+            </Link>
           </Card>
         );
       })}
@@ -24,4 +32,4 @@ const ForumsPage = () => {
   );
 };
 
-export default ForumsPage;
+export default ForumPosts;

@@ -6,13 +6,17 @@ import { Link } from "react-router-dom";
 const AllTrainerPage = () => {
   const [allTrainers] = useAllTrainer();
 
+  const acceptedTrainers = allTrainers.filter(
+    (trainer) => trainer.status === "accepted"
+  );
+
   return (
     <div className="my-10">
       <Helmet>
         <title>Fitness Flow | All Trainer Page</title>
       </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {allTrainers.map((trainer) => {
+        {acceptedTrainers.map((trainer) => {
           return (
             <div key={trainer._id} className="w-full border-2 border-gray-300">
               <img

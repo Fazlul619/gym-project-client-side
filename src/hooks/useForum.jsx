@@ -4,7 +4,7 @@ const useForum = () => {
   const [allForums, setAllForums] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/allForumPost")
+    fetch("https://assignment-12-server-side-six.vercel.app/allForumPost")
       .then((res) => res.json())
       .then((data) => {
         setAllForums(data);

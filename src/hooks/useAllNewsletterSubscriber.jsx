@@ -4,7 +4,7 @@ const useAllNewsletterSubscriber = () => {
   const [allNewsletterSubscriber, setAllNewsletterSubscriber] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/subscriber")
+    fetch("https://assignment-12-server-side-six.vercel.app/subscriber")
       .then((res) => res.json())
       .then((data) => {
         setAllNewsletterSubscriber(data);

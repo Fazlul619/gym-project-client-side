@@ -4,7 +4,7 @@ const useAllClasses = () => {
   const [allClasses, setAllClasses] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/allClasses")
+    fetch("https://assignment-12-server-side-six.vercel.app/allClasses")
       .then((res) => res.json())
       .then((data) => {
         setAllClasses(data);

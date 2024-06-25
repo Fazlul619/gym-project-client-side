@@ -12,7 +12,7 @@ import "@smastrom/react-rating/style.css";
 const Testimonial = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/allReview  ")
+    fetch("https://assignment-12-server-side-six.vercel.app/allReview  ")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);

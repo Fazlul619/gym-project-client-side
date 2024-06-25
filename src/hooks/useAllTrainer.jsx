@@ -4,7 +4,7 @@ const useAllTrainer = () => {
   const [allTrainers, setAllTrainers] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/allTrainers")
+    fetch("https://assignment-12-server-side-six.vercel.app/allTrainers")
       .then((res) => res.json())
       .then((data) => {
         setAllTrainers(data);

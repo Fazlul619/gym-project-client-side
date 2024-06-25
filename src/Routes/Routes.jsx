@@ -47,7 +47,9 @@ export const router = createBrowserRouter([
         path: "/trainerDetailsPage/:id",
         element: <TrainerDetailsPage></TrainerDetailsPage>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allTrainers/${params.id}`),
+          fetch(
+            `https://assignment-12-server-side-six.vercel.app/allTrainers/${params.id}`
+          ),
       },
       {
         path: "/forumsPage",
@@ -57,7 +59,9 @@ export const router = createBrowserRouter([
         path: "/forumDetails/:id",
         element: <ForumDetails></ForumDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allForumPost/${params.id}`),
+          fetch(
+            `https://assignment-12-server-side-six.vercel.app/allForumPost/${params.id}`
+          ),
       },
       {
         path: "/login",
@@ -150,7 +154,7 @@ export const router = createBrowserRouter([
         path: "profilePage",
         element: <ProfilePage></ProfilePage>,
         // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/users/${params.email}`),
+        //   fetch(`https://assignment-12-server-side-six.vercel.app/users/${params.email}`),
       },
       {
         path: "bookedTrainer",

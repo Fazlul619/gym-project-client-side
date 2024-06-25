@@ -45,7 +45,7 @@ const AllClassesPage = () => {
           expertise: trainer.selectedExpertise,
           email: trainer.email,
         }));
-
+        console.log(selectedExpertiseWithEmail);
         const finalTrainers = allTrainers.filter(
           (trainer) => trainer.email === selectedExpertiseWithEmail.email
         );

@@ -4,7 +4,7 @@ const useUser = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/allUsers")
+    fetch("https://assignment-12-server-side-six.vercel.app/allUsers")
       .then((res) => res.json())
       .then((data) => {
         setUsers(data);
